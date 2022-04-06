@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ $@ == o ];then
+	git config --global http.proxy http://127.0.0.1:10809
+	git config --global https.proxy http://127.0.0.1:10809
+	npm config set proxy http://127.0.0.1:10809
+	npm config set https-proxy http://127.0.0.1:10809
+	echo 'git、npm已开启代理'
+elif [ $@ == c ];then
+	git config --global --unset http.proxy
+	git config --global --unset https.proxy
+	npm config delete proxy
+	npm config delete https-proxy
+	echo 'git、npm已关闭代理'
+else 
+	echo 请输入参数'o' or 'c'
+fi
+
+
